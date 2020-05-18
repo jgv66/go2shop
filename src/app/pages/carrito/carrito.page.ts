@@ -20,7 +20,20 @@ export class CarritoPage implements OnInit {
 
   ngOnInit() {}
 
-  async eliminar( producto ) {
+  agregar( item ) {
+    const posicion = this.baseLocal.miCarrito.findIndex( it => it.codigo === item.codigo );
+    this.baseLocal.miCarrito[posicion].cantidad += 1;
+  }
+  quitar( item ) {
+    const posicion = this.baseLocal.miCarrito.findIndex( it => it.codigo === item.codigo );
+    if ( this.baseLocal.miCarrito[posicion].cantidad === 1 ) {
+      this.eliminar( item );
+    } else {
+      this.baseLocal.miCarrito[posicion].cantidad -= 1;
+    }
+  }
+
+  async eliminar( item ) {
     const alert = await this.alertCtrl.create({
       message: 'Está seguro que desea eliminar este ítem de su carrito?',
       buttons: [
@@ -31,7 +44,7 @@ export class CarritoPage implements OnInit {
           handler: () => {}
         }, {
           text: 'Sí, quítelo',
-          handler: () => { this.baseLocal.quitarDelCarro( producto ); }
+          handler: () => { this.baseLocal.quitarDelCarro( item ); }
         }
       ]
     });

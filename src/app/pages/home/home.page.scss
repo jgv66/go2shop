@@ -1,13 +1,3 @@
-ion-icon {
-    ion-badge {
-        position: absolute;
-        opacity: 0.9;
-        top: -2px;
-        right: -3px;
-        border-radius: 100%;
-    }
-}
-
 .collection {
     @media (max-width: 779px) and (min-width: 0px) {
         column-count: 2;

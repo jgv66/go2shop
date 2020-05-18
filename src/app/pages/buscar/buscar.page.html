@@ -7,19 +7,19 @@
             Go2Shop - Buscar en la Tienda
         </ion-title>
         <ion-buttons slot="end">
-            <ion-button (click)="vercarrito($event)" *ngIf=" baseLocal.miCarrito.length>0 ">
+            <ion-button (click)="vercarrito($event)" *ngIf=" baseLocal.miCarrito.length>0 " style="margin-right: 12px; padding-right: 0px; border-right-width: 6px; width: 50px;">
                 <ion-icon size="large" name="cart-outline"></ion-icon>
-                <ion-badge mode="ios" color="danger">{{ baseLocal.miCarrito.length }}</ion-badge>
+                <ion-badge mode="ios" class="badgeovericon" color="danger">{{ baseLocal.miCarrito.length }}</ion-badge>
             </ion-button>
         </ion-buttons>
     </ion-toolbar>
 
     <ion-row style="height: 70px !important;max-height: 70px;">
-        <ion-col size="8">
+        <ion-col size="7" style="margin-top:5px;">
             <ion-input type="text" placeholder="digite aquí lo que desea buscar..." name="texto" [(ngModel)]="texto"></ion-input>
         </ion-col>
         <ion-col size="4">
-            <ion-button expand="block" (click)="buscar()" color="tertiary">
+            <ion-button expand="block" (click)="buscar()" color="tertiary" style="margin-top:8px;">
                 Buscar
             </ion-button>
         </ion-col>

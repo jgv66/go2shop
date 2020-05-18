@@ -87,3 +87,10 @@ ion-toast {
     -webkit-animation-name: fadeIn;
     animation-name: fadeIn;
 }
+
+.badgeovericon {
+    position: absolute;
+    top: 0px;
+    right: -5px;
+    border-radius: 100%;
+}

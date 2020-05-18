@@ -50,6 +50,11 @@ export class BuscarPage implements OnInit {
     });
     await popover.present();
     //
+    const { data } = await popover.onWillDismiss();
+    if ( data ) {
+      // se debe mostrar el baseLocal.miCarrito
+      // this.verproducto( this.imageList[data.pos] );
+    }
   }
 
   async verproducto( prod ) {

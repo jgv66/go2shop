@@ -60,6 +60,11 @@ export class HomePage implements OnInit {
     });
     await popover.present();
     //
+    const { data } = await popover.onWillDismiss();
+    if ( data ) {
+      // se debe mostrar el baseLocal.miCarrito
+      // this.verproducto( this.imageList[data.pos] );
+    }
   }
 
   segmentChanged(event) {
@@ -83,7 +88,7 @@ export class HomePage implements OnInit {
       component: VerprodPage,
       componentProps: { producto: prod }
     });
-    return await modal.present();
+    await modal.present();
   }
 
   loadImages(init, event?) {

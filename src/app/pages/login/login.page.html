@@ -1,9 +1,132 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>login</ion-title>
-  </ion-toolbar>
+<ion-header no-border>
+    <ion-toolbar color="tertiary">
+        <ion-buttons slot="start">
+            <ion-menu-button color="warning" menu="primerMenu"></ion-menu-button>
+        </ion-buttons>
+        <ion-title style="padding-left: 20px;">
+            Go2Shop - Login
+        </ion-title>
+        <ion-buttons slot="end">
+            <ion-button (click)="vercarrito($event)" *ngIf=" baseLocal.miCarrito.length>0 " style="margin-right: 12px; padding-right: 0px; border-right-width: 6px; width: 50px;">
+                <ion-icon size="large" name="cart-outline"></ion-icon>
+                <ion-badge mode="ios" class="badgeovericon" color="danger">{{ baseLocal.miCarrito.length }}</ion-badge>
+            </ion-button>
+        </ion-buttons>
+    </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content class="animated fadeIn">
+
+    <div class="flip-container" #flipcontainer>
+        <div class="flipper">
+            <div class="front">
+                <ion-card>
+                    <ion-card-header style="margin-left: 20px;">
+                        <ion-card-title>Entrar a la Tienda con mis datos</ion-card-title>
+                    </ion-card-header>
+                    <ion-card-content>
+                        <ion-item lines="none">
+                            <ion-label position="stacked">Email</ion-label>
+                            <ion-input type="email" name="email" ([ngModel])="email" clear-input="true"></ion-input>
+                        </ion-item>
+
+                        <ion-item lines="none">
+                            <ion-label position="stacked">Password</ion-label>
+                            <ion-input type="password" name="password" ([ngModel])="password" clear-input="true"></ion-input>
+                        </ion-item>
+
+                        <ion-button expand="block" color="primary" class="ion-padding-horizontal ion-margin-vertical" (click)="login()">
+                            Ingresar
+                        </ion-button>
+                        <ion-row>
+                            <ion-col size="6">
+                                <ion-button size="small" expand="block" color="secondary" fill="clear" class="ion-padding-horizontal ion-margin-vertical" (click)="toggleRegister(1)">
+                                    Crear una Cuenta
+                                </ion-button>
+                            </ion-col>
+                            <ion-col size="6">
+                                <ion-button size="small" expand="block" color="secondary" fill="clear" class="ion-padding-horizontal ion-margin-vertical" (click)="toggleRegister(2)">
+                                    Olvidé mi clave...
+                                </ion-button>
+                            </ion-col>
+                        </ion-row>
+                    </ion-card-content>
+                </ion-card>
+            </div>
+
+            <div class="back">
+                <ion-card *ngIf=" backType === 1 " mode="ios">
+                    <ion-card-header>
+                        <ion-card-title style="margin-left: 20px;">Nuevo registro</ion-card-title>
+                    </ion-card-header>
+                    <ion-card-content>
+
+                        <ion-item lines="none">
+                            <ion-label position="stacked">Email (Obligatorio para registrarse)</ion-label>
+                            <ion-input type="email" name="email" ([ngModel])="email" clear-input="true"></ion-input>
+                        </ion-item>
+                        <ion-item lines="none">
+                            <ion-label position="stacked">Nro. de Teléfono (Obligatorio para registrarse)</ion-label>
+                            <ion-input type="tel" name="celular" ([ngModel])="celular" clear-input="true"></ion-input>
+                        </ion-item>
+                        <ion-item lines="none">
+                            <ion-label position="stacked">Password</ion-label>
+                            <ion-input type="password" name="password" ([ngModel])="password" clear-input="true"></ion-input>
+                        </ion-item>
+                        <ion-item lines="none">
+                            <ion-label position="stacked">Nombre y Apellidos</ion-label>
+                            <ion-input type="text" name="nombre" ([ngModel])="nombre" clear-input="true"></ion-input>
+                        </ion-item>
+                        <ion-item lines="none">
+                            <ion-label position="stacked">Dirección</ion-label>
+                            <ion-input name="direccion" ([ngModel])="direccion" clear-input="true"></ion-input>
+                        </ion-item>
+
+                        <ion-button expand="block" class="ion-padding-horizontal ion-margin-vertical" (click)="register()">
+                            Crear mi Cuenta
+                        </ion-button>
+
+                        <ion-button expand="block" color="secondary" fill="clear" class="ion-padding-horizontal ion-margin-vertical" (click)="toggleRegister()">
+                            <ion-icon name="arrow-back" slot="start"></ion-icon>
+                            Volver al Ingreso
+                        </ion-button>
+
+                    </ion-card-content>
+
+                </ion-card>
+                <ion-card *ngIf=" backType === 2 " mode="ios">
+                    <ion-card-header style="margin-left: 20px;">
+                        <ion-card-title>Olvidé mi clave...</ion-card-title>
+                        <ion-card-subtitle style="text-transform: none!important;margin-top: 10px;">
+                            Un correo será enviado a su cuenta email que nos indique, previa verificación de nuestros ejecutivos de su identidad. Lo llamaremos.
+                        </ion-card-subtitle>
+                    </ion-card-header>
+
+                    <ion-card-content>
+
+                        <ion-item lines="none">
+                            <ion-label position="stacked">Email </ion-label>
+                            <ion-input type="email" name="email" ([ngModel])="email" clear-input="true"></ion-input>
+                        </ion-item>
+                        <ion-item lines="none">
+                            <ion-label position="stacked">Nro. de Teléfono</ion-label>
+                            <ion-input type="tel" name="celular" ([ngModel])="celular" clear-input="true"></ion-input>
+                        </ion-item>
+                        <ion-button expand="block" class="ion-padding-horizontal ion-margin-vertical" (click)="meolvide()">
+                            Enviar solicitud
+                        </ion-button>
+
+                        <ion-button expand="block" color="secondary" fill="clear" class="ion-padding-horizontal ion-margin-vertical" (click)="toggleRegister()">
+                            <ion-icon name="arrow-back" slot="start"></ion-icon>
+                            Volver al Ingreso
+                        </ion-button>
+
+                    </ion-card-content>
+
+                </ion-card>
+
+            </div>
+        </div>
+    </div>
 
 </ion-content>
