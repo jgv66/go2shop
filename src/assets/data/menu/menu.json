@@ -1,0 +1,31 @@
+[{
+        "icon": "home-outline",
+        "title": "Ir a la Vitrina",
+        "url": "/home"
+    },
+    {
+        "icon": "search-outline",
+        "title": "Buscar en la Tienda",
+        "url": "/buscar"
+    },
+    {
+        "icon": "cart-outline",
+        "title": "Revisar mi Carrito",
+        "url": "/carrito"
+    },
+    {
+        "icon": "person-outline",
+        "title": "Registrarme en la Tienda",
+        "url": "/login"
+    },
+    {
+        "icon": "mail-outline",
+        "title": "Mis Notificaciones",
+        "url": "/mensajes"
+    },
+    {
+        "icon": "settings-outline",
+        "title": "Configuración",
+        "url": "/setup"
+    }
+]

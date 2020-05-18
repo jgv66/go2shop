@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Go2Shop</string>
+    <string name="title_activity_main">Go2Shop</string>
+    <string name="package_name">cl.kinetik.go2shop</string>
+    <string name="custom_url_scheme">cl.kinetik.go2shop</string>
+</resources>

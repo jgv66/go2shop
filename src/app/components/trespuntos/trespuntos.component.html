@@ -1,0 +1,5 @@
+<ion-list lines="none">
+    <ion-item *ngFor="let item of baseLocal.miCarrito; let i = index;" (click)="onClick( i )" style="height: 30px; display: flex; align-items: center;">
+        <ion-label style="font-size: 60%;" color="black">{{ item.descrip }}</ion-label>
+    </ion-item>
+</ion-list>

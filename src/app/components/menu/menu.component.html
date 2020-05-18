@@ -1,0 +1,26 @@
+<ion-menu side="start" contentId="menu1" menuId="primerMenu">
+
+    <ion-header>
+        <ion-toolbar color="tertiary">
+            <ion-title>Menú</ion-title>
+        </ion-toolbar>
+    </ion-header>
+
+    <ion-content class="animated fadeIn">
+
+        <ion-list>
+
+            <!-- toggle cerrará con el click -->
+            <ion-menu-toggle *ngFor="let p of acciones | async">
+                <ion-item [routerLink]="p.url" routerDirection="root" routerLinkActive="active">
+                    <ion-icon [name]="p.icon" slot="start" color="tertiary"></ion-icon>
+                    <ion-label>
+                        {{ p.title }}
+                    </ion-label>
+                </ion-item>
+            </ion-menu-toggle>
+        </ion-list>
+
+    </ion-content>
+
+</ion-menu>

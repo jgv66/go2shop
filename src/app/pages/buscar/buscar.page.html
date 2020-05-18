@@ -1,0 +1,53 @@
+<ion-header no-border>
+    <ion-toolbar color="tertiary">
+        <ion-buttons slot="start">
+            <ion-menu-button color="warning" menu="primerMenu"></ion-menu-button>
+        </ion-buttons>
+        <ion-title style="padding-left: 45px;">
+            Go2Shop - Buscar en la Tienda
+        </ion-title>
+        <ion-buttons slot="end">
+            <ion-button (click)="vercarrito($event)" *ngIf=" baseLocal.miCarrito.length>0 ">
+                <ion-icon size="large" name="cart-outline"></ion-icon>
+                <ion-badge mode="ios" color="danger">{{ baseLocal.miCarrito.length }}</ion-badge>
+            </ion-button>
+        </ion-buttons>
+    </ion-toolbar>
+
+    <ion-row style="height: 70px !important;max-height: 70px;">
+        <ion-col size="8">
+            <ion-input type="text" placeholder="digite aquí lo que desea buscar..." name="texto" [(ngModel)]="texto"></ion-input>
+        </ion-col>
+        <ion-col size="4">
+            <ion-button expand="block" (click)="buscar()" color="tertiary">
+                Buscar
+            </ion-button>
+        </ion-col>
+    </ion-row>
+
+    <!-- <ion-searchbar placeholder="digite algo a buscar..." (ionChange)="onSearchChange(false,$event)" [debounce]="500" showCancelButton="always"></ion-searchbar> -->
+</ion-header>
+
+<ion-progress-bar *ngIf=" buscando " type="indeterminate"></ion-progress-bar>
+
+<ion-content class="animated fadeIn">
+
+    <div class="collection ion-padding">
+        <div class="collection-item" text-center *ngFor="let prod of imageList " tappable (click)="verproducto( prod )">
+            <img [src]=" prod.codigosincolor " onerror=" this.src='assets/images/no-img.png' " />
+            <ion-label class="ion-text-wrap" style="font-size:70%;; font-weight: bold;">{{ prod.descripcion }}</ion-label>
+            <ion-badge mode="ios" slot="end" style="font-size:65%;padding-top: 5px;" color="tertiary">${{ prod.precio | number:"1.0-0"}}</ion-badge>
+        </div>
+    </div>
+
+    <ion-infinite-scroll threshold='300px' (ionInfinite)="loadImages(false,$event)" *ngIf=" lScrollInfinito == true ">
+        <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Buscando más datos..."></ion-infinite-scroll-content>
+    </ion-infinite-scroll>
+
+    <ion-fab horizontal="end" vertical="bottom" slot="fixed">
+        <ion-fab-button color="warning" (click)="scrollToTop()" size="small">
+            <ion-icon name="arrow-up"></ion-icon>
+        </ion-fab-button>
+    </ion-fab>
+
+</ion-content>
