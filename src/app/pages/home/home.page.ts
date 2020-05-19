@@ -1,5 +1,5 @@
 import { Component, ViewChild, OnInit } from '@angular/core';
-import { IonContent, ModalController, IonSegment, PopoverController } from '@ionic/angular';
+import { IonContent, ModalController, IonSegment, PopoverController, AlertController } from '@ionic/angular';
 import { FuncionesService } from '../../services/funciones.service';
 import { NetworkService } from '../../services/network.service';
 import { BaselocalService } from '../../services/baselocal.service';
@@ -33,7 +33,8 @@ export class HomePage implements OnInit {
 
   constructor(public modalCtrl: ModalController,
               private popoverCtrl: PopoverController,
-              private funciones: FuncionesService,
+              private alertCtrl: AlertController,
+              public funciones: FuncionesService,
               public baseLocal: BaselocalService,
               private netWork: NetworkService,
               public domSanitizer: DomSanitizer ) {
@@ -49,8 +50,17 @@ export class HomePage implements OnInit {
     this.loadImages( true );
   }
 
+  async whoiam() {
+    const alert = await this.alertCtrl.create({
+      // header: 'Alert',
+      subHeader: this.baseLocal.user.email,
+      message: this.baseLocal.user.celular,
+      buttons: ['OK']
+    });
+    await alert.present();
+  }
+
   async vercarrito() {
-    console.log(this.baseLocal.miCarrito);
     //
     const popover = await this.popoverCtrl.create({
       component: TrespuntosComponent,
@@ -60,11 +70,11 @@ export class HomePage implements OnInit {
     });
     await popover.present();
     //
-    const { data } = await popover.onWillDismiss();
-    if ( data ) {
-      // se debe mostrar el baseLocal.miCarrito
-      // this.verproducto( this.imageList[data.pos] );
-    }
+    // const { data } = await popover.onWillDismiss();
+    // if ( data ) {
+    //   // se debe mostrar el baseLocal.miCarrito
+    //   // this.verproducto( this.imageList[data.pos] );
+    // }
   }
 
   segmentChanged(event) {
@@ -103,7 +113,7 @@ export class HomePage implements OnInit {
     //
     this.netWork.vitrina( this.offset )
       .subscribe( (res: any) => {
-        console.log('respuesta ', res);
+        // console.log('respuesta ', res);
         res.data.forEach(element => {
           element.codigosincolor = IMG_URL + element.codigosincolor ;
         });

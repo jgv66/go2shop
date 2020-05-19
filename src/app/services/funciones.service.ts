@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { ToastController, AlertController } from '@ionic/angular';
+import { BaselocalService } from './baselocal.service';
 
 @Injectable({
   providedIn: 'root'
@@ -15,9 +16,12 @@ export class FuncionesService {
     console.log('<<< FuncionesProvider >>>');
   }
 
+  encriptar( texto ) {}
+
   async msgAlert( titulo, texto ) {
     const alert = await this.alertCtrl.create({
       // header: titulo,
+      animated: true,
       mode: 'md',
       message: texto,
       buttons: ['OK']
@@ -70,5 +74,6 @@ export class FuncionesService {
       elem.style.display = estilo;
     }
   }
+
 
 }

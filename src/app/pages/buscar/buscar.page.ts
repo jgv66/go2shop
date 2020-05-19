@@ -1,5 +1,5 @@
 import { Component, ViewChild, OnInit } from '@angular/core';
-import { IonContent, ModalController, IonSegment, PopoverController } from '@ionic/angular';
+import { IonContent, ModalController, IonSegment, PopoverController, AlertController } from '@ionic/angular';
 import { FuncionesService } from '../../services/funciones.service';
 import { NetworkService } from '../../services/network.service';
 import { BaselocalService } from '../../services/baselocal.service';
@@ -26,12 +26,23 @@ export class BuscarPage implements OnInit {
   lScrollInfinito = false;
 
   constructor(private modalCtrl: ModalController,
-              private funciones: FuncionesService,
+              public funciones: FuncionesService,
+              private alertCtrl: AlertController,
               public baseLocal: BaselocalService,
               private netWork: NetworkService,
               private popoverCtrl: PopoverController ) {}
 
   ngOnInit() {}
+
+  async whoiam() {
+    const alert = await this.alertCtrl.create({
+      // header: 'Alert',
+      subHeader: this.baseLocal.user.email,
+      message: this.baseLocal.user.celular,
+      buttons: ['OK']
+    });
+    await alert.present();
+  }
 
   scrollToTop() {
     this.content.scrollToTop(1500);

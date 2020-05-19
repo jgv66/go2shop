@@ -29,24 +29,21 @@ export class BaselocalService implements OnInit {
   ngOnInit() {}
 
   inicializa() {
-    this.obtenUltimoUsuario();
+    // this.obtenUltimoUsuario();
     this.obtenUltimoConfig();
     this.initMiCarrito();
+    this.initUsuario();
+    this.initMensajes();
   }
 
   initUsuario() {
     return {  id: 0,
               email: '',
-              password: '',
-              token: null,
-              expira: null,
               nombre: '',
               celular: '',
-              direccion1: '',
-              direccion2: '',
-              ciudad: '',
-              comuna: '',
-              pais: '',
+              direccion: '',
+              creacion: Date,
+              valido: false
             };
   }
 

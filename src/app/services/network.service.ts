@@ -26,5 +26,17 @@ export class NetworkService {
     return this.http.post<any[]>(this.url + '/g2s_buscar', body );
   }
 
+  buscarUsuario( user ) {
+    const pssw = window.btoa(user.password);
+    const body = { email: user.email, pssw };
+    return this.http.post<any[]>(this.url + '/g2s_usuario', body );
+  }
+
+  crearUsuario( user ) {
+    const pssw = window.btoa(user.password);
+    const body = { email: user.email, pssw, celu: user.celular, nombre: user.nombre, direccion: user.direccion };
+    return this.http.post<any[]>(this.url + '/g2s_insUsuario', body );
+  }
+
 
 }

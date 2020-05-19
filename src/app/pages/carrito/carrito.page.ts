@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { AlertController } from '@ionic/angular';
 import { FuncionesService } from '../../services/funciones.service';
 import { BaselocalService } from '../../services/baselocal.service';
 import { NetworkService } from '../../services/network.service';
-import { AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-carrito',
@@ -19,6 +19,16 @@ export class CarritoPage implements OnInit {
                private alertCtrl: AlertController ) { }
 
   ngOnInit() {}
+
+  async whoiam() {
+    const alert = await this.alertCtrl.create({
+      // header: 'Alert',
+      subHeader: this.baseLocal.user.email,
+      message: this.baseLocal.user.celular,
+      buttons: ['OK']
+    });
+    await alert.present();
+  }
 
   agregar( item ) {
     const posicion = this.baseLocal.miCarrito.findIndex( it => it.codigo === item.codigo );

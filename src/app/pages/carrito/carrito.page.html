@@ -6,6 +6,11 @@
         <ion-title>
             Go2Shop - Mi carrito
         </ion-title>
+        <ion-buttons slot="end">
+            <ion-button *ngIf=" baseLocal.user?.id>0 " (click)="whoiam()">
+                <ion-icon size="large" name="person-outline"></ion-icon>
+            </ion-button>
+        </ion-buttons>
     </ion-toolbar>
 </ion-header>
 
@@ -68,7 +73,8 @@
 
             </ion-card>
         </ion-item>
-        <ion-button expand="block" color="tertiary" style="margin: 20px;">Total de la Compra : <b>$ {{ baseLocal.sumaCarrito() | number:"1.0-0" }}</b></ion-button>
+        <ion-button expand="block" color="tertiary" style="margin: 20px; padding-left: 14px;">Total de la Compra : <b>$ {{ baseLocal.sumaCarrito() | number:"1.0-0" }}</b></ion-button>
+
     </ion-list>
 
 </ion-content>
