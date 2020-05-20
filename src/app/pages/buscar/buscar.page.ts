@@ -5,6 +5,7 @@ import { NetworkService } from '../../services/network.service';
 import { BaselocalService } from '../../services/baselocal.service';
 import { VerprodPage } from '../verprod/verprod.page';
 import { TrespuntosComponent } from '../../components/trespuntos/trespuntos.component';
+import { Router } from '@angular/router';
 
 const PAGE_SIZE = 20;
 const IMG_URL   = 'http://www.grupocaltex.cl/imagenes/fotos18/';
@@ -30,6 +31,7 @@ export class BuscarPage implements OnInit {
               private alertCtrl: AlertController,
               public baseLocal: BaselocalService,
               private netWork: NetworkService,
+              private router: Router,
               private popoverCtrl: PopoverController ) {}
 
   ngOnInit() {}
@@ -51,22 +53,9 @@ export class BuscarPage implements OnInit {
     event.target.src = 'assets/imgs/no-img.png';
   }
 
-  async vercarrito() {
-    //
-    const popover = await this.popoverCtrl.create({
-      component: TrespuntosComponent,
-      event,
-      mode: 'ios',
-      translucent: false
-    });
-    await popover.present();
-    //
-    const { data } = await popover.onWillDismiss();
-    if ( data ) {
-      // se debe mostrar el baseLocal.miCarrito
-      // this.verproducto( this.imageList[data.pos] );
-    }
-  }
+  vercarrito() {
+    this.router.navigateByUrl( '/carrito' );
+ }
 
   async verproducto( prod ) {
     const modal = await this.modalCtrl.create({

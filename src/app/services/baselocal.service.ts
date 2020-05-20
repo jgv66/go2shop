@@ -195,7 +195,7 @@ export class BaselocalService implements OnInit {
                               imagen:       producto.imagen });
     }
     //
-    this.funciones.muestraySale( 'Item agregado al carrito', 1, 'middle', 'tertiary' );
+    this.funciones.muestraySale( 'Item agregado a la bolsa', 1, 'middle', 'tertiary' );
     this.refreshCarrito(); // next method updates the stream value
   }
 

@@ -4,7 +4,7 @@
             <ion-menu-button color="warning" menu="primerMenu"></ion-menu-button>
         </ion-buttons>
         <ion-title>
-            Go2Shop - Mi carrito
+            Go2Shop - Mi bolsa
         </ion-title>
         <ion-buttons slot="end">
             <ion-button *ngIf=" baseLocal.user?.id>0 " (click)="whoiam()">
@@ -21,7 +21,7 @@
     <ion-list>
 
         <ion-list-header mode="ios">
-            Itemes del carrito
+            Itemes seleccionados
         </ion-list-header>
 
         <ion-item *ngFor="let item of baseLocal.miCarrito" lines="none" class="animated fadeIn fadeOut">
@@ -73,7 +73,7 @@
 
             </ion-card>
         </ion-item>
-        <ion-button expand="block" color="tertiary" style="margin: 20px; padding-left: 14px;">Total de la Compra : <b>$ {{ baseLocal.sumaCarrito() | number:"1.0-0" }}</b></ion-button>
+        <ion-button expand="block" color="tertiary" style="margin: 20px; padding-left: 14px;">Total de la Compra: <b>$ {{ baseLocal.sumaCarrito() | number:"1.0-0" }}</b></ion-button>
 
     </ion-list>
 

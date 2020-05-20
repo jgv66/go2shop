@@ -7,6 +7,7 @@ import { VerprodPage } from '../verprod/verprod.page';
 import { DomSanitizer } from '@angular/platform-browser';
 import { Observable } from 'rxjs';
 import { TrespuntosComponent } from '../../components/trespuntos/trespuntos.component';
+import { Router } from '@angular/router';
 
 const PAGE_SIZE = 20;
 const IMG_URL   = 'http://www.grupocaltex.cl/imagenes/fotos18/';
@@ -37,6 +38,7 @@ export class HomePage implements OnInit {
               public funciones: FuncionesService,
               public baseLocal: BaselocalService,
               private netWork: NetworkService,
+              private router: Router,
               public domSanitizer: DomSanitizer ) {
     this.loadImages(0);
   }
@@ -60,21 +62,8 @@ export class HomePage implements OnInit {
     await alert.present();
   }
 
-  async vercarrito() {
-    //
-    const popover = await this.popoverCtrl.create({
-      component: TrespuntosComponent,
-      event,
-      mode: 'ios',
-      translucent: false
-    });
-    await popover.present();
-    //
-    // const { data } = await popover.onWillDismiss();
-    // if ( data ) {
-    //   // se debe mostrar el baseLocal.miCarrito
-    //   // this.verproducto( this.imageList[data.pos] );
-    // }
+  vercarrito() {
+     this.router.navigateByUrl( '/carrito' );
   }
 
   segmentChanged(event) {

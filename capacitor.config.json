@@ -1,13 +1,13 @@
 {
-  "appId": "cl.kinetik.go2shop",
-  "appName": "Go2Shop",
-  "bundledWebRuntime": false,
-  "npmClient": "npm",
-  "webDir": "www",
-  "plugins": {
-    "SplashScreen": {
-      "launchShowDuration": 0
-    }
-  },
-  "cordova": {}
+    "appId": "cl.kinetik.go2shop",
+    "appName": "Go2Shop",
+    "bundledWebRuntime": false,
+    "npmClient": "npm",
+    "webDir": "www",
+    "plugins": {
+        "SplashScreen": {
+            "launchShowDuration": 3000
+        }
+    },
+    "cordova": {}
 }

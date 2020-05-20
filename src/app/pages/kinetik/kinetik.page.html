@@ -1,0 +1,32 @@
+<ion-header no-border>
+    <ion-toolbar color="tertiary">
+        <ion-buttons slot="start">
+            <ion-menu-button color="warning" menu="primerMenu"></ion-menu-button>
+        </ion-buttons>
+        <ion-title>
+            Kinetik - Go2Shop
+        </ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content class="animated fadeIn">
+
+    <ion-list-header mode="ios">
+        kinetik.cl
+    </ion-list-header>
+
+    <ion-item lines="none">
+        <ion-label class="ion-text-wrap" style="font-size:85%; ">Somos una empresa especializada en la consultoría y desarrollo de aplicaciones móviles iOS, Android y PWA, tanto nativas, híbridas o web. Llevamos a cabo tareas de análisis de proyectos, usabilidad y diseño gráfico adaptado a teléfonos y tablets,
+            así como el posterior desarrollo y publicación de las apps. Integramos sistemas ERP, colaboramos directamente con el equipo de desarrollo y/o formamos equipos de trabajo con funciones específicas en tiempos prefijados.
+        </ion-label>
+    </ion-item>
+
+    <ion-slides pager="true" [options]="slideOpts" mode="ios" style="max-height: 350px;">
+        <ion-slide *ngFor="let img of imagenes">
+            <ion-card>
+                <img [src]="img" />
+            </ion-card>
+        </ion-slide>
+    </ion-slides>
+
+</ion-content>

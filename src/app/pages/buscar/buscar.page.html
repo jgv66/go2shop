@@ -10,8 +10,8 @@
             <ion-button *ngIf=" baseLocal.user?.id>0 " (click)="whoiam()">
                 <ion-icon size="large" name="person-outline"></ion-icon>
             </ion-button>
-            <ion-button (click)="vercarrito($event)" *ngIf=" baseLocal.miCarrito.length>0 " style="margin-right: 12px; padding-right: 0px; border-right-width: 6px; width: 50px;">
-                <ion-icon size="large" name="cart-outline"></ion-icon>
+            <ion-button (click)="vercarrito()" *ngIf=" baseLocal.miCarrito.length>0 " style="margin-right: 12px; padding-right: 0px; border-right-width: 6px; width: 50px;">
+                <ion-icon size="large" name="basket-outline"></ion-icon>
                 <ion-badge mode="ios" class="badgeovericon" color="danger">{{ baseLocal.miCarrito.length }}</ion-badge>
             </ion-button>
         </ion-buttons>

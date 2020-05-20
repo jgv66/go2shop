@@ -4,6 +4,7 @@ import { BaselocalService } from '../../services/baselocal.service';
 import { TrespuntosComponent } from '../../components/trespuntos/trespuntos.component';
 import { FuncionesService } from '../../services/funciones.service';
 import { NetworkService } from '../../services/network.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -26,6 +27,7 @@ export class LoginPage implements OnInit {
   constructor(private funciones: FuncionesService,
               private popoverCtrl: PopoverController,
               private menuCtrl: MenuController,
+              private router: Router,
               public baseLocal: BaselocalService,
               private network: NetworkService) {}
 
@@ -46,7 +48,8 @@ export class LoginPage implements OnInit {
         if ( res.resultado === 'ok' && res.data[0]?.id > 0 ) {
             this.baseLocal.guardaUltimoUsuario( res.data[0] );
             this.funciones.muestraySale( 'Hola ' + res.data[0].nombre + ', ' + this.funciones.textoSaludo() , 1.5 );
-            this.menuCtrl.toggle();
+          // this.toggleRegister();
+          this.router.navigateByUrl( '/home' );
         } else {
           this.funciones.msgAlert('', 'Email y clave no reconocidos. Corrija y reintente.');
         }
@@ -69,7 +72,8 @@ export class LoginPage implements OnInit {
         this.buscando = false;
         if ( res.resultado === 'ok' && res.data[0]?.id > 0 ) {
           this.funciones.msgAlert('', 'Bienvenido a nuestra Tienda. Utilice su email y clave para entrar en la tienda.' );
-          this.toggleRegister();
+          // this.toggleRegister();
+          this.router.navigateByUrl( '/home' );
         } else {
           this.funciones.msgAlert('', res.data[0].mensaje );
         }
@@ -90,21 +94,8 @@ export class LoginPage implements OnInit {
     this.flipcontainer.nativeElement.classList.toggle('flip');
   }
 
-  async vercarrito() {
-    //
-    const popover = await this.popoverCtrl.create({
-      component: TrespuntosComponent,
-      event,
-      mode: 'ios',
-      translucent: false
-    });
-    await popover.present();
-    //
-    const { data } = await popover.onWillDismiss();
-    if ( data ) {
-      // se debe mostrar el baseLocal.miCarrito
-      // this.verproducto( this.imageList[data.pos] );
-    }
-  }
+  vercarrito() {
+    this.router.navigateByUrl( '/carrito' );
+ }
 
 }

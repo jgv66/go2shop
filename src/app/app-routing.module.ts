@@ -31,6 +31,10 @@ const routes: Routes = [
     path: 'setup',
     loadChildren: () => import('./pages/setup/setup.module').then( m => m.SetupPageModule)
   },
+  {
+    path: 'kinetik',
+    loadChildren: () => import('./pages/kinetik/kinetik.module').then( m => m.KinetikPageModule)
+  },
 ];
 
 @NgModule({
